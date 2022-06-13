@@ -15,7 +15,7 @@ public class ImageImpl implements Image {
    */
   public ImageImpl(String filename) {
     pixels = ImageUtil.readPPM(filename);
-  }
+  } 
 
   /**
    * Create a new image by applying a filter to another image.

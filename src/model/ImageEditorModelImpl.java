@@ -52,6 +52,21 @@ public class ImageEditorModelImpl implements ImageEditorModel {
     filters.put("brighten", (x, y, img, p) -> new RGBPixelImpl(img.getPixel(x, y).red() + p,
             img.getPixel(x, y).green() + p,
             img.getPixel(x, y).blue() + p));
+
+    filters.put("gaussian", new KernelFilter(new double[][]{
+            {1/16.0, 1/8.0, 1/16.0},
+            {1/8.0, 1/4.0, 1/8.0},
+            {1/16.0, 1/8.0, 1/16.0}
+    }));
+
+    filters.put("sharpen", new KernelFilter(new double[][]{
+            {1/8.0, 1/8.0, 1/8.0, 1/8.0, 1/8.0},
+            {1/8.0, 1/4.0, 1/4.0, 1/4.0, 1/8.0},
+            {1/8.0, 1/4.0, 1/1.0, 1/4.0, 1/8.0},
+            {1/8.0, 1/4.0, 1/4.0, 1/4.0/ 1/8.0},
+            {1/8.0, 1/8.0, 1/8.0, 1/8.0, 1/8.0}
+
+    }));
   }
 
   /**
