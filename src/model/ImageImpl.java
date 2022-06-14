@@ -14,7 +14,7 @@ public class ImageImpl implements Image {
    * @param filename filename of ppm file
    */
   public ImageImpl(String filename) {
-    pixels = ImageUtil.readPPM(filename);
+    pixels = ImageUtil.loadImage(filename);
   } 
 
   /**
