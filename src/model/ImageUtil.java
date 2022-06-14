@@ -1,10 +1,15 @@
 package model;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
-import java.io.FileNotFoundException;
-import java.io.FileInputStream;
+
+import javax.imageio.ImageIO;
 
 
 /**
@@ -87,6 +92,37 @@ public class ImageUtil {
     }
 
     out.close();
+  }
+
+  public static RGBPixel[][] loadImage(String filename) {
+    if (filename.endsWith(".ppm")) {
+      return readPPM(filename);
+    }
+
+    BufferedImage image;
+
+    try {
+      image = ImageIO.read(new File(filename));
+    } catch (IOException e) {
+      throw new IllegalArgumentException("file not found");
+    }
+
+    RGBPixel[][] pixels = new RGBPixel[image.getWidth()][image.getHeight()];
+    for (int x = 0; x < pixels.length; x++) {
+      for (int y = 0; y < pixels[0].length; y++) {
+        int color = image.getRGB(x, y);
+        int r = ColorModel.getRGBdefault().getRed(color);
+        int g = ColorModel.getRGBdefault().getGreen(color);
+        int b = ColorModel.getRGBdefault().getBlue(color);
+        pixels[x][y] = new RGBPixelImpl(r, g, b);
+      }
+    }
+
+    return pixels;
+  }
+
+  public static void saveImage(String filename, RGBPixel[][] pixels) {
+
   }
 
   /**
