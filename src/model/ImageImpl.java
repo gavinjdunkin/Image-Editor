@@ -43,7 +43,7 @@ public class ImageImpl implements Image {
    */
   @Override
   public void save(String filename) throws IOException {
-    ImageUtil.savePPM(filename, pixels);
+    ImageUtil.saveImage(filename, pixels);
   }
 
   /**
