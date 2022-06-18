@@ -1,4 +1,4 @@
-# OOD Assignment 4 - Image Editor
+# OOD Assignment 5 - Image Editor
 
 ## Interfaces
 
@@ -16,20 +16,6 @@
 - `ImageEditorTextView` - Supports rendering text messages to an `Appendable` output
 - `ImageEditorTextController` - Supports taking in textual commands from a `Readable`
 - `ImageUtil` - Supports saving and loading `.ppm` files
+- `ColorTransformFilter` - DESCRIPTION
+- `KernelFilter` - DESCRIPTION
 
-## Example Script
-
-When the program is executed it will await console input. Here is a list of example commands:   
-  
-`load res\nishil.ppm nishil`  
-`flip-vertical nishil nishil-vertical`  
-`save res\nishil-vertical.ppm nishil-vertical`  
-`flip-horizontal nishil nishil-horizontal`  
-`save res\nishil-horizontal.ppm nishil-horizontal`  
-`brighten 50 nishil nishil-bright`  
-`brighten -50 nishil nishil-dark`  
-`luma nishil nishil-luma`  
-`brighten 25 nishil-luma nishil-bright-luma`  
-`save res\nishil-bright-luma.ppm nishil-bright-luma`  
-`quit`  
-  
