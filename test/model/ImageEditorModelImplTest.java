@@ -39,6 +39,18 @@ public class ImageEditorModelImplTest {
       fail();
     }
 
+    try {
+      iel.loadImage("samplepng.png", "samplepng");
+      try {
+        iel.filterImage("red-value", "samplepng", "red-samplepng", 0);
+        //success
+      } catch (IllegalArgumentException er) {
+        fail();
+      }
+    } catch (IllegalArgumentException e) {
+      fail();
+    }
+
     //invalid testing
     try {
       iel.loadImage("invalid.ppm", "invalid");
@@ -64,8 +76,22 @@ public class ImageEditorModelImplTest {
     }
 
     try {
+      iel.loadImage("samplepng.png", "testpng");
+      try {
+        iel.filterImage("red-value", "testpng", "red-testpng", 0);
+      } catch (IllegalArgumentException e) {
+        fail();
+      }
+    } catch (IllegalArgumentException e) {
+      fail();
+    }
+
+    try {
       iel.saveImage("sample-red.ppm", "red-test");
       iel.loadImage("sample-red.ppm", "red-test-load");
+
+      iel.saveImage("samplepng-red.png", "red-testpng");
+      iel.loadImage("samplepng-red.png", "red-testpng-load");
     } catch (IllegalArgumentException e) {
       fail();
     }
@@ -99,8 +125,30 @@ public class ImageEditorModelImplTest {
     }
 
     try {
+      iel.loadImage("samplepng.png", "testpng");
+      try {
+        iel.filterImage("gaussian", "testpng", "gau-testpng", 0);
+        iel.filterImage("sharpen", "testpng", "sha-testpng", 0);
+        iel.filterImage("sepia", "testpng", "sep-testpng", 0);
+      } catch (IllegalArgumentException e) {
+        fail();
+      }
+    } catch (IllegalArgumentException e) {
+      fail();
+    }
+
+    try {
       iel.saveImage("sample-red.ppm", "red-test");
       iel.loadImage("sample-red.ppm", "red-test-load");
+
+      iel.saveImage("gau-samplepng.png", "gau-testpng");
+      iel.loadImage("gau-samplepng.png", "gau-testpng-load");
+
+      iel.saveImage("sha-samplepng.png", "sha-testpng");
+      iel.loadImage("sha-samplepng.png", "sha-testpng-load");
+
+      iel.saveImage("sep-samplepng.png", "sep-testpng");
+      iel.loadImage("sep-samplepng.png", "sep-testpng-load");
     } catch (IllegalArgumentException e) {
       fail();
     }
