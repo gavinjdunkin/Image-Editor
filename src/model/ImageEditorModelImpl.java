@@ -26,20 +26,17 @@ public class ImageEditorModelImpl implements ImageEditorModel {
     filters.put("green-value", (x, y, img, p) -> new RGBPixelImpl(img.getPixel(x, y).green()));
     filters.put("blue-value", (x, y, img, p) -> new RGBPixelImpl(img.getPixel(x, y).blue()));
 
-    filters.put("value", (x, y, img, p) ->
-    {
+    filters.put("value", (x, y, img, p) -> {
       RGBPixel c = img.getPixel(x, y);
       return new RGBPixelImpl(Math.max(c.red(), Math.max(c.green(), c.blue())));
     });
 
-    filters.put("intensity", (x, y, img, p) ->
-    {
+    filters.put("intensity", (x, y, img, p) -> {
       RGBPixel c = img.getPixel(x, y);
       return new RGBPixelImpl((c.red() + c.green() + c.blue()) / 3);
     });
 
-    filters.put("luma", (x, y, img, p) ->
-    {
+    filters.put("luma", (x, y, img, p) -> {
       RGBPixel c = img.getPixel(x, y);
       return new RGBPixelImpl((int) (0.2126 * c.red() + 0.7152 * c.green() + 0.0722 * c.blue()));
     });
@@ -54,17 +51,17 @@ public class ImageEditorModelImpl implements ImageEditorModel {
             img.getPixel(x, y).blue() + p));
 
     filters.put("gaussian", new KernelFilter(new double[][]{
-            {1/16.0, 1/8.0, 1/16.0},
-            {1/8.0, 1/4.0, 1/8.0},
-            {1/16.0, 1/8.0, 1/16.0}
+            {1 / 16.0, 1 / 8.0, 1 / 16.0},
+            {1 / 8.0, 1 / 4.0, 1 / 8.0},
+            {1 / 16.0, 1 / 8.0, 1 / 16.0}
     }));
 
     filters.put("sharpen", new KernelFilter(new double[][]{
-            {1/8.0, 1/8.0, 1/8.0, 1/8.0, 1/8.0},
-            {1/8.0, 1/4.0, 1/4.0, 1/4.0, 1/8.0},
-            {1/8.0, 1/4.0, 1/1.0, 1/4.0, 1/8.0},
-            {1/8.0, 1/4.0, 1/4.0, 1/4.0/ 1/8.0},
-            {1/8.0, 1/8.0, 1/8.0, 1/8.0, 1/8.0}
+            {1 / 8.0, 1 / 8.0, 1 / 8.0, 1 / 8.0, 1 / 8.0},
+            {1 / 8.0, 1 / 4.0, 1 / 4.0, 1 / 4.0, 1 / 8.0},
+            {1 / 8.0, 1 / 4.0, 1 / 1.0, 1 / 4.0, 1 / 8.0},
+            {1 / 8.0, 1 / 4.0, 1 / 4.0, 1 / 4.0 / 1 / 8.0},
+            {1 / 8.0, 1 / 8.0, 1 / 8.0, 1 / 8.0, 1 / 8.0}
 
     }));
 

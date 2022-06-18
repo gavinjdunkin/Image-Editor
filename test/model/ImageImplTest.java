@@ -24,8 +24,7 @@ public class ImageImplTest {
     }
     try {
       Image i0 = new ImageImpl("koala.ppm");
-      Image i1 = new ImageImpl(i0,
-              (x, y, img, p) ->
+      Image i1 = new ImageImpl(i0, (x, y, img, p) ->
                       new RGBPixelImpl(img.getPixel(x, (img.getHeight() - 1) - y)), 0);
       assertEquals(218, i1.getPixel(0, 0).red());
       assertEquals(199, i1.getPixel(0, 0).green());
@@ -35,8 +34,7 @@ public class ImageImplTest {
     }
     try {
       Image i0 = new ImageImpl("koala.ppm");
-      Image i1 = new ImageImpl(i0,
-              (x, y, img, p) ->
+      Image i1 = new ImageImpl(i0, (x, y, img, p) ->
                       new RGBPixelImpl(img.getPixel(x, (img.getHeight() - 1) - y)), 0);
       Image i2 = new ImageImpl(i1, (x, y, img, p) ->
               new RGBPixelImpl(img.getPixel(x, y).red()), 0);
@@ -72,9 +70,9 @@ public class ImageImplTest {
       Image i4 = new ImageImpl("res\\samplepng.png");
       //gaussian
       Image i5 = new ImageImpl(i4, new KernelFilter(new double[][]{
-              {1/16.0, 1/8.0, 1/16.0},
-              {1/8.0, 1/4.0, 1/8.0},
-              {1/16.0, 1/8.0, 1/16.0}
+              {1 / 16.0, 1 / 8.0, 1 / 16.0},
+              {1 / 8.0, 1 / 4.0, 1 / 8.0},
+              {1 / 16.0, 1 / 8.0, 1 / 16.0}
       }), 0);
       assertEquals(0, i4.getPixel(0, 0).red());
       assertEquals(255, i4.getPixel(0, 0).green());
@@ -115,11 +113,11 @@ public class ImageImplTest {
       Image i6 = new ImageImpl("res\\samplejpeg.jpg");
       //sharpen
       Image i7 = new ImageImpl(i6, new KernelFilter(new double[][]{
-              {1/8.0, 1/8.0, 1/8.0, 1/8.0, 1/8.0},
-              {1/8.0, 1/4.0, 1/4.0, 1/4.0, 1/8.0},
-              {1/8.0, 1/4.0, 1/1.0, 1/4.0, 1/8.0},
-              {1/8.0, 1/4.0, 1/4.0, 1/4.0/ 1/8.0},
-              {1/8.0, 1/8.0, 1/8.0, 1/8.0, 1/8.0}
+              {1 / 8.0, 1 / 8.0, 1 / 8.0, 1 / 8.0, 1 / 8.0},
+              {1 / 8.0, 1 / 4.0, 1 / 4.0, 1 / 4.0, 1 / 8.0},
+              {1 / 8.0, 1 / 4.0, 1 / 1.0, 1 / 4.0, 1 / 8.0},
+              {1 / 8.0, 1 / 4.0, 1 / 4.0, 1 / 4.0 / 1 / 8.0},
+              {1 / 8.0, 1 / 8.0, 1 / 8.0, 1 / 8.0, 1 / 8.0}
 
       }), 0);
       assertEquals(1, i6.getPixel(0, 0).red());

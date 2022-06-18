@@ -13,7 +13,8 @@ import javax.imageio.ImageIO;
 
 
 /**
- * This class contains utility methods to read a PPM image from file and simply print its contents. Feel free to change this method
+ * This class contains utility methods to read a PPM image from file and simply print its contents.
+ * Feel free to change this method.
  * as required.
  */
 public class ImageUtil {
@@ -93,6 +94,11 @@ public class ImageUtil {
     out.close();
   }
 
+  /**
+   * Loads the image from filename png jpg.
+   * @param filename name of file
+   * @return pixel 2d array
+   */
   public static RGBPixel[][] loadImage(String filename) {
     if (filename.endsWith(".ppm")) {
       return readPPM(filename);
@@ -120,16 +126,24 @@ public class ImageUtil {
     return pixels;
   }
 
+  /**
+   * Saves image for other file types.
+   * @param filename name of file
+   * @param pixels pixels to be saved
+   * @throws IOException unable to save
+   */
   public static void saveImage(String filename, RGBPixel[][] pixels) throws IOException {
     if (filename.endsWith(".ppm")) {
       savePPM(filename, pixels);
       return;
     }
 
-    BufferedImage image = new BufferedImage(pixels.length, pixels[0].length, BufferedImage.TYPE_INT_RGB);
+    BufferedImage image = new BufferedImage(pixels.length, pixels[0].length,
+            BufferedImage.TYPE_INT_RGB);
     for (int x = 0; x < image.getWidth(); x++) {
       for (int y = 0; y < image.getHeight(); y++) {
-        image.setRGB(x, y, (pixels[x][y].red() << 16) + (pixels[x][y].green() << 8) + (pixels[x][y].blue() << 0));
+        image.setRGB(x, y, (pixels[x][y].red() << 16) + (pixels[x][y].green() << 8)
+                + (pixels[x][y].blue() << 0));
 
       }
     }
@@ -139,7 +153,8 @@ public class ImageUtil {
     }
 
 
-    boolean status = ImageIO.write(image, filename.substring(filename.lastIndexOf(".") + 1), new File(filename));
+    boolean status = ImageIO.write(image,
+            filename.substring(filename.lastIndexOf(".") + 1), new File(filename));
 
     if (!status) {
       throw new IllegalArgumentException("invalid file extension");

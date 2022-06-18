@@ -5,6 +5,9 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.fail;
 
+/**
+ * Tests imageeditormodelimpl class.
+ */
 public class ImageEditorModelImplTest {
   ImageEditorModel iel;
 
@@ -12,18 +15,18 @@ public class ImageEditorModelImplTest {
   public void testConstructor() {
     iel = new ImageEditorModelImpl();
 
-    assertArrayEquals(new String[]{"red-value",
-            "intensity",
-            "brighten",
-            "sharpen",
-            "sepia",
-            "green-value",
-            "flip-horizontal",
-            "value",
-            "gaussian",
-            "blue-value",
-            "luma",
-            "flip-vertical"}, iel.listFilters());
+    assertArrayEquals(new String[]{ "red-value",
+                                    "intensity",
+                                    "brighten",
+                                    "sharpen",
+                                    "sepia",
+                                    "green-value",
+                                    "flip-horizontal",
+                                    "value",
+                                    "gaussian",
+                                    "blue-value",
+                                    "luma",
+                                    "flip-vertical"}, iel.listFilters());
   }
 
   @Test
@@ -169,18 +172,18 @@ public class ImageEditorModelImplTest {
   public void testListFilters() {
     iel = new ImageEditorModelImpl();
 
-    assertArrayEquals(new String[]{"red-value",
-            "intensity",
-            "brighten",
-            "sharpen",
-            "sepia",
-            "green-value",
-            "flip-horizontal",
-            "value",
-            "gaussian",
-            "blue-value",
-            "luma",
-            "flip-vertical"}, iel.listFilters());
+    assertArrayEquals(new String[]{ "red-value",
+                                    "intensity",
+                                    "brighten",
+                                    "sharpen",
+                                    "sepia",
+                                    "green-value",
+                                    "flip-horizontal",
+                                    "value",
+                                    "gaussian",
+                                    "blue-value",
+                                    "luma",
+                                    "flip-vertical"}, iel.listFilters());
 
   }
 }
