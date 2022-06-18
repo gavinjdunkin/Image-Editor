@@ -1,9 +1,7 @@
 package model;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
-import java.awt.image.DirectColorModel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -123,27 +121,31 @@ public class ImageUtil {
     return pixels;
   }
 
-  public static void saveImage(String filename, RGBPixel[][] pixels) {
+  public static void saveImage(String filename, RGBPixel[][] pixels) throws IOException {
+    if (filename.endsWith(".ppm")) {
+      savePPM(filename, pixels);
+      return;
+    }
+
     BufferedImage image = new BufferedImage(pixels.length, pixels[0].length, BufferedImage.TYPE_INT_RGB);
-    for(int x = 0; x < image.getWidth(); x++) {
-      for(int y = 0; y < image.getHeight(); y++) {
+    for (int x = 0; x < image.getWidth(); x++) {
+      for (int y = 0; y < image.getHeight(); y++) {
         image.setRGB(x, y, (pixels[x][y].red() << 16) + (pixels[x][y].green() << 8) + (pixels[x][y].blue() << 0));
 
       }
     }
 
-    if(!filename.contains(".")) {
+    if (!filename.contains(".")) {
       throw new IllegalArgumentException("Filename must contain a file extension");
     }
 
-    try {
-      boolean status = ImageIO.write(image, filename.substring(filename.lastIndexOf(".") + 1), new File(filename));
-      if(!status) {
-        throw new IllegalArgumentException("invalid file extension");
-      }
-    } catch (IOException e) {
-      throw new IllegalArgumentException("specified file could not be created");
+
+    boolean status = ImageIO.write(image, filename.substring(filename.lastIndexOf(".") + 1), new File(filename));
+
+    if (!status) {
+      throw new IllegalArgumentException("invalid file extension");
     }
+
   }
 
   /**
