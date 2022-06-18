@@ -15,9 +15,12 @@ public class ImageEditorModelImplTest {
     assertArrayEquals(new String[]{"red-value",
             "intensity",
             "brighten",
+            "sharpen",
+            "sepia",
             "green-value",
             "flip-horizontal",
             "value",
+            "gaussian",
             "blue-value",
             "luma",
             "flip-vertical"}, iel.listFilters());
@@ -40,7 +43,7 @@ public class ImageEditorModelImplTest {
     }
 
     try {
-      iel.loadImage("samplepng.png", "samplepng");
+      iel.loadImage("res\\samplepng.png", "samplepng");
       try {
         iel.filterImage("red-value", "samplepng", "red-samplepng", 0);
         //success
@@ -65,7 +68,7 @@ public class ImageEditorModelImplTest {
     iel = new ImageEditorModelImpl();
 
     try {
-      iel.loadImage("sample.ppm", "test");
+      iel.loadImage("res\\sample.ppm", "test");
       try {
         iel.filterImage("red-value", "test", "red-test", 0);
       } catch (IllegalArgumentException e) {
@@ -76,7 +79,7 @@ public class ImageEditorModelImplTest {
     }
 
     try {
-      iel.loadImage("samplepng.png", "testpng");
+      iel.loadImage("res\\samplepng.png", "testpng");
       try {
         iel.filterImage("red-value", "testpng", "red-testpng", 0);
       } catch (IllegalArgumentException e) {
@@ -102,7 +105,7 @@ public class ImageEditorModelImplTest {
     iel = new ImageEditorModelImpl();
 
     try {
-      iel.loadImage("sample.ppm", "test");
+      iel.loadImage("res\\sample.ppm", "test");
       try {
         iel.filterImage("red-value", "test", "red-test", 0);
       } catch (IllegalArgumentException e) {
@@ -125,7 +128,7 @@ public class ImageEditorModelImplTest {
     }
 
     try {
-      iel.loadImage("samplepng.png", "testpng");
+      iel.loadImage("res\\samplepng.png", "testpng");
       try {
         iel.filterImage("gaussian", "testpng", "gau-testpng", 0);
         iel.filterImage("sharpen", "testpng", "sha-testpng", 0);
@@ -169,9 +172,12 @@ public class ImageEditorModelImplTest {
     assertArrayEquals(new String[]{"red-value",
             "intensity",
             "brighten",
+            "sharpen",
+            "sepia",
             "green-value",
             "flip-horizontal",
             "value",
+            "gaussian",
             "blue-value",
             "luma",
             "flip-vertical"}, iel.listFilters());

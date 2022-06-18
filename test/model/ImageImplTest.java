@@ -48,7 +48,7 @@ public class ImageImplTest {
     }
 
     try {
-      Image i3 = new ImageImpl("sample.ppm");
+      Image i3 = new ImageImpl("res\\sample.ppm");
       assertEquals(0, i3.getPixel(0, 0).red());
       assertEquals(255, i3.getPixel(0, 0).green());
       assertEquals(255, i3.getPixel(0, 0).blue());
@@ -69,7 +69,7 @@ public class ImageImplTest {
     }
 
     try {
-      Image i4 = new ImageImpl("samplepng.png");
+      Image i4 = new ImageImpl("res\\samplepng.png");
       //gaussian
       Image i5 = new ImageImpl(i4, new KernelFilter(new double[][]{
               {1/16.0, 1/8.0, 1/16.0},
@@ -92,27 +92,27 @@ public class ImageImplTest {
       assertEquals(255, i4.getPixel(1, 1).green());
       assertEquals(255, i4.getPixel(1, 1).blue());
 
-      assertEquals(0, i5.getPixel(0, 0).red());
-      assertEquals(255, i5.getPixel(0, 0).green());
-      assertEquals(255, i5.getPixel(0, 0).blue());
+      assertEquals(79, i5.getPixel(0, 0).red());
+      assertEquals(79, i5.getPixel(0, 0).green());
+      assertEquals(143, i5.getPixel(0, 0).blue());
 
-      assertEquals(255, i5.getPixel(1, 0).red());
-      assertEquals(0, i5.getPixel(1, 0).green());
-      assertEquals(255, i5.getPixel(1, 0).blue());
+      assertEquals(111, i5.getPixel(1, 0).red());
+      assertEquals(63, i5.getPixel(1, 0).green());
+      assertEquals(143, i5.getPixel(1, 0).blue());
 
-      assertEquals(255, i5.getPixel(0, 1).red());
-      assertEquals(0, i5.getPixel(0, 1).green());
-      assertEquals(255, i5.getPixel(0, 1).blue());
+      assertEquals(111, i5.getPixel(0, 1).red());
+      assertEquals(63, i5.getPixel(0, 1).green());
+      assertEquals(143, i5.getPixel(0, 1).blue());
 
-      assertEquals(255, i5.getPixel(1, 1).red());
-      assertEquals(255, i5.getPixel(1, 1).green());
-      assertEquals(255, i5.getPixel(1, 1).blue());
+      assertEquals(127, i5.getPixel(1, 1).red());
+      assertEquals(79, i5.getPixel(1, 1).green());
+      assertEquals(143, i5.getPixel(1, 1).blue());
     } catch (IllegalArgumentException e) {
       fail();
     }
 
     try {
-      Image i6 = new ImageImpl("samplejpeg.jpeg");
+      Image i6 = new ImageImpl("res\\samplejpeg.jpg");
       //sharpen
       Image i7 = new ImageImpl(i6, new KernelFilter(new double[][]{
               {1/8.0, 1/8.0, 1/8.0, 1/8.0, 1/8.0},
@@ -122,32 +122,32 @@ public class ImageImplTest {
               {1/8.0, 1/8.0, 1/8.0, 1/8.0, 1/8.0}
 
       }), 0);
-      assertEquals(0, i6.getPixel(0, 0).red());
+      assertEquals(1, i6.getPixel(0, 0).red());
       assertEquals(255, i6.getPixel(0, 0).green());
-      assertEquals(255, i6.getPixel(0, 0).blue());
+      assertEquals(252, i6.getPixel(0, 0).blue());
 
-      assertEquals(255, i6.getPixel(1, 0).red());
+      assertEquals(253, i6.getPixel(1, 0).red());
       assertEquals(0, i6.getPixel(1, 0).green());
-      assertEquals(255, i6.getPixel(1, 0).blue());
+      assertEquals(253, i6.getPixel(1, 0).blue());
 
       assertEquals(255, i6.getPixel(0, 1).red());
-      assertEquals(0, i6.getPixel(0, 1).green());
+      assertEquals(1, i6.getPixel(0, 1).green());
       assertEquals(255, i6.getPixel(0, 1).blue());
 
-      assertEquals(255, i6.getPixel(1, 1).red());
-      assertEquals(255, i6.getPixel(1, 1).green());
+      assertEquals(246, i6.getPixel(1, 1).red());
+      assertEquals(247, i6.getPixel(1, 1).green());
       assertEquals(255, i6.getPixel(1, 1).blue());
 
-      assertEquals(0, i7.getPixel(0, 0).red());
+      assertEquals(135, i7.getPixel(0, 0).red());
       assertEquals(255, i7.getPixel(0, 0).green());
       assertEquals(255, i7.getPixel(0, 0).blue());
 
       assertEquals(255, i7.getPixel(1, 0).red());
-      assertEquals(0, i7.getPixel(1, 0).green());
+      assertEquals(125, i7.getPixel(1, 0).green());
       assertEquals(255, i7.getPixel(1, 0).blue());
 
       assertEquals(255, i7.getPixel(0, 1).red());
-      assertEquals(0, i7.getPixel(0, 1).green());
+      assertEquals(126, i7.getPixel(0, 1).green());
       assertEquals(255, i7.getPixel(0, 1).blue());
 
       assertEquals(255, i7.getPixel(1, 1).red());
@@ -157,44 +157,44 @@ public class ImageImplTest {
       fail();
     }
     try {
-      Image i8 = new ImageImpl("samplejpeg.jpeg");
+      Image i8 = new ImageImpl("res\\samplejpeg.jpg");
       //sharpen
       Image i9 = new ImageImpl(i8, new ColorTransformFilter(new double[][]{
               {0.393, 0.769, 0.189},
               {0.349, 0.686, 0.168},
               {0.272, 0.534, 0.131}
       }), 0);
-      assertEquals(0, i8.getPixel(0, 0).red());
+      assertEquals(1, i8.getPixel(0, 0).red());
       assertEquals(255, i8.getPixel(0, 0).green());
-      assertEquals(255, i8.getPixel(0, 0).blue());
+      assertEquals(252, i8.getPixel(0, 0).blue());
 
-      assertEquals(255, i8.getPixel(1, 0).red());
+      assertEquals(253, i8.getPixel(1, 0).red());
       assertEquals(0, i8.getPixel(1, 0).green());
-      assertEquals(255, i8.getPixel(1, 0).blue());
+      assertEquals(253, i8.getPixel(1, 0).blue());
 
       assertEquals(255, i8.getPixel(0, 1).red());
-      assertEquals(0, i8.getPixel(0, 1).green());
+      assertEquals(1, i8.getPixel(0, 1).green());
       assertEquals(255, i8.getPixel(0, 1).blue());
 
-      assertEquals(255, i8.getPixel(1, 1).red());
-      assertEquals(255, i8.getPixel(1, 1).green());
+      assertEquals(246, i8.getPixel(1, 1).red());
+      assertEquals(247, i8.getPixel(1, 1).green());
       assertEquals(255, i8.getPixel(1, 1).blue());
 
-      assertEquals(0, i9.getPixel(0, 0).red());
-      assertEquals(255, i9.getPixel(0, 0).green());
-      assertEquals(255, i9.getPixel(0, 0).blue());
+      assertEquals(244, i9.getPixel(0, 0).red());
+      assertEquals(217, i9.getPixel(0, 0).green());
+      assertEquals(169, i9.getPixel(0, 0).blue());
 
-      assertEquals(255, i9.getPixel(1, 0).red());
-      assertEquals(0, i9.getPixel(1, 0).green());
-      assertEquals(255, i9.getPixel(1, 0).blue());
+      assertEquals(147, i9.getPixel(1, 0).red());
+      assertEquals(130, i9.getPixel(1, 0).green());
+      assertEquals(101, i9.getPixel(1, 0).blue());
 
-      assertEquals(255, i9.getPixel(0, 1).red());
-      assertEquals(0, i9.getPixel(0, 1).green());
-      assertEquals(255, i9.getPixel(0, 1).blue());
+      assertEquals(149, i9.getPixel(0, 1).red());
+      assertEquals(132, i9.getPixel(0, 1).green());
+      assertEquals(103, i9.getPixel(0, 1).blue());
 
       assertEquals(255, i9.getPixel(1, 1).red());
       assertEquals(255, i9.getPixel(1, 1).green());
-      assertEquals(255, i9.getPixel(1, 1).blue());
+      assertEquals(232, i9.getPixel(1, 1).blue());
     } catch (IllegalArgumentException e) {
       fail();
     }
@@ -203,7 +203,7 @@ public class ImageImplTest {
   @Test
   public void testSave() {
     try {
-      Image i0 = new ImageImpl("sample.ppm");
+      Image i0 = new ImageImpl("res\\sample.ppm");
       Image i1 = new ImageImpl(i0, (x, y, img, p) ->
               new RGBPixelImpl(img.getPixel(x, y).red()), 0);
       try {
@@ -252,7 +252,7 @@ public class ImageImplTest {
     }
 
     try {
-      Image i4 = new ImageImpl("samplepng.png");
+      Image i4 = new ImageImpl("res\\samplepng.png");
       Image i5 = new ImageImpl(i4, (x, y, img, p) ->
               new RGBPixelImpl(img.getPixel(x, y).red()), 0);
       try {
@@ -301,7 +301,7 @@ public class ImageImplTest {
     }
 
     try {
-      Image i8 = new ImageImpl("sample.ppm");
+      Image i8 = new ImageImpl("res\\sample.ppm");
       Image i9 = new ImageImpl(i8, (x, y, img, p) ->
               new RGBPixelImpl(img.getPixel(x, y).red()), 0);
       try {
@@ -327,6 +327,7 @@ public class ImageImplTest {
         assertEquals(i8.getPixel(1, 1).green(), i10.getPixel(1, 1).green());
         assertEquals(i8.getPixel(1, 1).blue(), i10.getPixel(1, 1).blue());
 
+        //fails due to jpeg compression
         assertEquals(i9.getPixel(0, 0).red(), i11.getPixel(0, 0).red());
         assertEquals(i9.getPixel(0, 0).green(), i11.getPixel(0, 0).green());
         assertEquals(i9.getPixel(0, 0).blue(), i11.getPixel(0, 0).blue());
@@ -361,7 +362,7 @@ public class ImageImplTest {
       fail();
     }
     try {
-      Image i1 = new ImageImpl("sample.ppm");
+      Image i1 = new ImageImpl("res\\sample.ppm");
       assertEquals(0, i1.getPixel(0, 0).red());
       assertEquals(255, i1.getPixel(0, 0).green());
       assertEquals(255, i1.getPixel(0, 0).blue());
@@ -382,7 +383,7 @@ public class ImageImplTest {
     }
 
     try {
-      Image i2 = new ImageImpl("sample.ppm");
+      Image i2 = new ImageImpl("res\\sample.ppm");
       Image i3 = new ImageImpl(i2, (x, y, img, p) ->
               new RGBPixelImpl(img.getPixel(x, y).red()), 0);
       try {
@@ -451,7 +452,7 @@ public class ImageImplTest {
       fail();
     }
     try {
-      Image i1 = new ImageImpl("sample.ppm");
+      Image i1 = new ImageImpl("res\\sample.ppm");
       assertEquals(2, i1.getWidth());
     } catch (IllegalArgumentException e) {
       fail();
@@ -467,7 +468,7 @@ public class ImageImplTest {
       fail();
     }
     try {
-      Image i1 = new ImageImpl("sample.ppm");
+      Image i1 = new ImageImpl("res\\sample.ppm");
       assertEquals(2, i1.getHeight());
     } catch (IllegalArgumentException e) {
       fail();
